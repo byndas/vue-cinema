@@ -6,14 +6,17 @@ import genres from "./util/genres";
 new Vue({
   el: "#app",
   data: {
+    // categories
     genre: [],
     time: []
   },
   methods: {
     checkFilter(category, title, checked) {
       if (checked) {
+        // adds film title to genre or time
         this[category].push(title);
       } else {
+        // removes film title from genre or time
         let index = this[category].indexOf(title);
         if (index > -1) {
           this[category].splice(index, 1);
@@ -28,6 +31,7 @@ new Vue({
                 </div>`,
       data() {
         return {
+          // dummy data
           movies: [
             { title: "Pulp Fiction", genre: genres.CRIME },
             { title: "Home Alone", genre: genres.COMEDY },
