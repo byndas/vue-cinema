@@ -13,6 +13,7 @@
 <script>
 import genres from "../util/genres";
 import CheckFilter from "./CheckFilter.vue";
+
 export default {
   data() {
     return {
