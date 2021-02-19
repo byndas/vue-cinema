@@ -1,22 +1,29 @@
 <template>
-    <div v-bind:class="{ 'check-filter': true, active: checked }" v-on:click="checkFilter">
-        <span class="checkbox"></span>
-        <span class="check-filter-title">{{ title }}</span>
+  <div id="movie-filter">
+    <h2>Filter results</h2>
+    <h3>By time of day</h3>
+    <div class="filter-group">
+      <check-filter v-bind:for="time in times" category="time" v-bind:title="time"></check-filter>
     </div>
+    <h3>By genre</h3>
+    <div class="filter-group">
+      <check-filter v-bind:for="genre in genres" category="genre" v-bind:title="genre"></check-filter>
+    </div>
+  </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                checked: false
-            }
-        },
-        props: [ 'title' ],
-        methods: {
-            checkFilter() {
-                this.checked = !this.checked;
-                this.$emit('check-filter', 'genre', this.title, this.checked);
-            }
-        }
-    }
+import genres from "../util/genres";
+import times from "../util/times";
+import CheckFilter from "./CheckFilter.vue";
+export default {
+  data() {
+    return {
+      genres,
+      times
+    };
+  },
+  components: {
+    CheckFilter
+  }
+};
 </script>
